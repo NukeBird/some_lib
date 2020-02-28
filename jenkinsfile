@@ -30,7 +30,8 @@ pipeline {
     }
     post { 
         success {
-            archiveArtifacts artifacts: 'install/*'
+            zip zipFile: 'build.zip', archive: false, dir: 'install'
+            archiveArtifacts artifacts: 'build.zip'
         }
     }
 }
