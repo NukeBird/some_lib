@@ -4,9 +4,18 @@ pipeline {
         skipStagesAfterUnstable()
     }
     stages {
-        stage('show files') { 
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Generate') { 
             steps { 
-                sh 'ls' 
+                sh '''
+                    mkdir -p build local &&
+                    cd build &&
+                    cmake .. -DCMAKE_INSTALL_PREFIX=../install
+                '''
             }
         }
     }
