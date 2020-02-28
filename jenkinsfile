@@ -29,8 +29,8 @@ pipeline {
     }
     post { 
         success {
-            zip zipFile: 'build.zip', archive: false, dir: 'install'
-            archiveArtifacts artifacts: 'build.zip'
+            zip zipFile: 'quack.zip', archive: false, dir: 'install'
+            archiveArtifacts artifacts: 'quack.zip'
             cleanWs()
         }
     }
