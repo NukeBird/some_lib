@@ -18,5 +18,14 @@ pipeline {
                 '''
             }
         }
+        stage('Compile') { 
+            steps { 
+                sh '''
+                    cd build &&
+                    cmake --build . --target install --config Debug &&
+                    cmake --build . --target install --config Release &&
+                '''
+            }
+        }
     }
 }
