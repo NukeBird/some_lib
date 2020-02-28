@@ -32,5 +32,8 @@ pipeline {
             zip zipFile: 'build.zip', archive: false, dir: 'install'
             archiveArtifacts artifacts: 'build.zip'
         }
+        always { 
+            cleanWs()
+        }
     }
 }
