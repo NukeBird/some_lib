@@ -30,7 +30,7 @@ pipeline {
     post { 
         success {
             zip zipFile: 'quack.zip', archive: false, dir: 'install'
-            archiveArtifacts artifacts: 'quack.zip'
+            archiveArtifacts artifacts: 'quack.zip', fingerprint: true
             cleanWs()
         }
     }
