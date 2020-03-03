@@ -24,7 +24,6 @@ pipeline {
             zip zipFile: 'some_lib.zip', archive: false, dir: 'install'
             archiveArtifacts artifacts: 'some_lib.zip', fingerprint: true
             sh '''rm -rf some_lib.zip'''
-            sh '''git push --tags'''
         }
     }
 }
