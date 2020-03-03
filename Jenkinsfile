@@ -24,6 +24,8 @@ pipeline {
             zip zipFile: 'some_lib.zip', archive: false, dir: 'install'
             archiveArtifacts artifacts: 'some_lib.zip', fingerprint: true
             git push --tags
+        }
+        always {
             cleanWs()
         }
     }
