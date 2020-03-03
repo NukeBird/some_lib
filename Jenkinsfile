@@ -25,7 +25,6 @@ pipeline {
             archiveArtifacts artifacts: 'some_lib.zip', fingerprint: true
             sh '''rm -rf some_lib.zip'''
             sh '''git config --local credential.helper "!f() { echo username=\\$GIT_AUTH_USR; echo password=\\$GIT_AUTH_PSW; }; f"'''
-            sh '''git push origin HEAD:$TARGET_BRANCH'''
             sh '''git push --tag'''
         }
     }
