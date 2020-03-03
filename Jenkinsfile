@@ -1,14 +1,6 @@
 pipeline { 
-    agent any 
-    options {
-        skipStagesAfterUnstable()
-    }
+    agent { dockerfile true }
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
         stage('Generate') { 
             steps { 
                 sh '''
@@ -31,7 +23,6 @@ pipeline {
         success {
             zip zipFile: 'some_lib.zip', archive: false, dir: 'install'
             archiveArtifacts artifacts: 'some_lib.zip', fingerprint: true
-            cleanWs()
         }
     }
 }
