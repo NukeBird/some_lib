@@ -21,7 +21,7 @@ pipeline {
         stage("Push") {
             steps {
                 withCredentials([usernamePassword(credentialsId: '3efc50db-d9ca-431b-9d2a-91f3523c33cd', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                    sh("git tag -a some_tag -m 'Jenkins'")
+
                     sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@<REPO> --tags')
                 }
             }
