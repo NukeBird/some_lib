@@ -25,7 +25,7 @@ pipeline {
         }
         stage("Push") {
             steps {
-                zip zipFile: 'some_lib.zip', archive: false, dir: 'install'
+                zip zipFile: 'some_lib.zip', archive: true, dir: 'install'
                 archiveArtifacts artifacts: 'some_lib.zip', fingerprint: true
                 sh '''rm -rf some_lib.zip'''
                 
