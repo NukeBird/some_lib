@@ -20,10 +20,12 @@ pipeline {
         }
         stage("Push") {
             steps {
-                sh('''
-                    git config --local credential.helper "!f() { echo username=\\$GIT_AUTH_USR; echo password=\\$GIT_AUTH_PSW; }; f"
-                    git push --tag
-                ''')
+                sshagent (credentials: ['8875e994-f71a-4ec8-9d4e-387f591b254c']) {
+                    ssh('''
+                        sh("git tag -a some_tag -m 'Jenkins'")
+                        sh('git push --tags')
+                    ''')
+                }
             }
         }
     }
