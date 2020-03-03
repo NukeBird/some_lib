@@ -20,7 +20,7 @@ pipeline {
         }
         stage("Push") {
             steps {
-                sshagent (credentials: ['8875e994-f71a-4ec8-9d4e-387f591b254c']) {
+                withCredentials([usernamePassword(credentialsId: '8875e994-f71a-4ec8-9d4e-387f591b254c', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                     sh("git tag -a some_tag -m 'Jenkins'")
                     sh('git push --tags')
                 }
