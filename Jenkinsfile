@@ -22,7 +22,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: '3efc50db-d9ca-431b-9d2a-91f3523c33cd', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
 
-                    sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@https://github.com/NukeBird/some_lib.git --tags')
+                    sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@some_lib.git --tags')
                 }
             }
         }
